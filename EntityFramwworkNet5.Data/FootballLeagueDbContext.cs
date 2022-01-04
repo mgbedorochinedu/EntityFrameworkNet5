@@ -12,7 +12,9 @@ namespace EntityFramwworkNet5.Data
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS; Database=Football-League-Db; Trusted_Connection=True");
+            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS; Database=Football-League-Db; Trusted_Connection=True")
+                .LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name }, Microsoft.Extensions.Logging.LogLevel.Information)
+                .EnableSensitiveDataLogging();
         }
 
 
